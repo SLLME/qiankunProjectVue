@@ -1,0 +1,194 @@
+<!DOCTYPE html><html><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"><meta name=renderer content=webkit><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><link rel=icon href=/cgfp/ui/favicon_new.ico><title>数电发票管理系统</title><script>var reloadNum = sessionStorage.getItem("reloadNum");
+      // var compatMode = document.compatMode;
+      if(!reloadNum /*&& compatMode != 'CSS1Compat'*/) {
+        var reload = setInterval(function () {
+          if (location.href.indexOf("IDM?code") != -1) {
+            sessionStorage.setItem("reloadNum", '1');
+            clearInterval(reload);
+            window.location.href = window.location.href;
+          }
+        }, 300)
+      }</script><style>html,
+    body,
+    #app {
+      height: 100%;
+      margin: 0px;
+      padding: 0px;
+    }
+    .chromeframe {
+      margin: 0.2em 0;
+      background: #ccc;
+      color: #000;
+      padding: 0.2em 0;
+    }
+
+    #loader-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 999999;
+    }
+
+    #loader {
+      display: block;
+      position: relative;
+      left: 50%;
+      top: 50%;
+      width: 150px;
+      height: 150px;
+      margin: -75px 0 0 -75px;
+      border-radius: 50%;
+      border: 3px solid transparent;
+      border-top-color: #FFF;
+      -webkit-animation: spin 2s linear infinite;
+      -ms-animation: spin 2s linear infinite;
+      -moz-animation: spin 2s linear infinite;
+      -o-animation: spin 2s linear infinite;
+      animation: spin 2s linear infinite;
+      z-index: 1001;
+    }
+
+    #loader:before {
+      content: "";
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      right: 5px;
+      bottom: 5px;
+      border-radius: 50%;
+      border: 3px solid transparent;
+      border-top-color: #FFF;
+      -webkit-animation: spin 3s linear infinite;
+      -moz-animation: spin 3s linear infinite;
+      -o-animation: spin 3s linear infinite;
+      -ms-animation: spin 3s linear infinite;
+      animation: spin 3s linear infinite;
+    }
+
+    #loader:after {
+      content: "";
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      right: 15px;
+      bottom: 15px;
+      border-radius: 50%;
+      border: 3px solid transparent;
+      border-top-color: #FFF;
+      -moz-animation: spin 1.5s linear infinite;
+      -o-animation: spin 1.5s linear infinite;
+      -ms-animation: spin 1.5s linear infinite;
+      -webkit-animation: spin 1.5s linear infinite;
+      animation: spin 1.5s linear infinite;
+    }
+
+
+    @-webkit-keyframes spin {
+      0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes spin {
+      0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+
+
+    #loader-wrapper .loader-section {
+      position: fixed;
+      top: 0;
+      width: 51%;
+      height: 100%;
+      background: #7171C6;
+      z-index: 1000;
+      -webkit-transform: translateX(0);
+      -ms-transform: translateX(0);
+      transform: translateX(0);
+    }
+
+    #loader-wrapper .loader-section.section-left {
+      left: 0;
+    }
+
+    #loader-wrapper .loader-section.section-right {
+      right: 0;
+    }
+
+
+    .loaded #loader-wrapper .loader-section.section-left {
+      -webkit-transform: translateX(-100%);
+      -ms-transform: translateX(-100%);
+      transform: translateX(-100%);
+      -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+      transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+    }
+
+    .loaded #loader-wrapper .loader-section.section-right {
+      -webkit-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+      transform: translateX(100%);
+      -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+      transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+    }
+
+    .loaded #loader {
+      opacity: 0;
+      -webkit-transition: all 0.3s ease-out;
+      transition: all 0.3s ease-out;
+    }
+
+    .loaded #loader-wrapper {
+      visibility: hidden;
+      -webkit-transform: translateY(-100%);
+      -ms-transform: translateY(-100%);
+      transform: translateY(-100%);
+      -webkit-transition: all 0.3s 1s ease-out;
+      transition: all 0.3s 1s ease-out;
+    }
+
+    .no-js #loader-wrapper {
+      display: none;
+    }
+
+    .no-js h1 {
+      color: #222222;
+    }
+
+    #loader-wrapper .load_title {
+      font-family: 'Open Sans';
+      color: #FFF;
+      font-size: 19px;
+      width: 100%;
+      text-align: center;
+      z-index: 9999999999999;
+      position: absolute;
+      top: 60%;
+      opacity: 1;
+      line-height: 30px;
+    }
+
+    #loader-wrapper .load_title span {
+      font-weight: normal;
+      font-style: italic;
+      font-size: 13px;
+      color: #FFF;
+      opacity: 0.5;
+    }</style><link href=/cgfp/ui/static/css/chunk-libs.23faf6bf.css rel=stylesheet><link href=/cgfp/ui/static/css/app.0487aa35.css rel=stylesheet></head><body><div id=app><div id=loader-wrapper><div id=loader></div><div class="loader-section section-left"></div><div class="loader-section section-right"></div><div class=load_title>正在加载系统资源，请耐心等待</div></div></div><script>(function(e){function c(c){for(var u,d,r=c[0],f=c[1],h=c[2],k=0,o=[];k<r.length;k++)d=r[k],Object.prototype.hasOwnProperty.call(a,d)&&a[d]&&o.push(a[d][0]),a[d]=0;for(u in f)Object.prototype.hasOwnProperty.call(f,u)&&(e[u]=f[u]);b&&b(c);while(o.length)o.shift()();return t.push.apply(t,h||[]),n()}function n(){for(var e,c=0;c<t.length;c++){for(var n=t[c],u=!0,d=1;d<n.length;d++){var r=n[d];0!==a[r]&&(u=!1)}u&&(t.splice(c--,1),e=f(f.s=n[0]))}return e}var u={},d={runtime:0},a={runtime:0},t=[];function r(e){return f.p+"static/js/"+({}[e]||e)+"."+{"chunk-020d04f6":"cabb89da","chunk-0b0867d8":"3e674f33","chunk-2611c278":"062a6478","chunk-28bdb6d8":"37de16df","chunk-3f93175c":"c5b2b8bb","chunk-2d0a2db2":"d0c6d02a","chunk-2d0ab187":"5d0e5ab2","chunk-08d6541a":"6abbb9bf","chunk-39ded03f":"5a62b674","chunk-3c8824aa":"9ff4092a","chunk-e7a230a4":"ec1c3780","chunk-2d0d6345":"f2c1e4cf","chunk-a31f410e":"f8b96de8","chunk-aaa2e532":"13a7476f","chunk-2d0da7cc":"3a2a2745","chunk-2d0e2366":"a3517025","chunk-779f4447":"c75eb560","chunk-2d0f012d":"ddeb06bb","chunk-2d216085":"f9bb1474","chunk-93853354":"567a9478","chunk-2d217e6d":"71b2ffb6","chunk-2d22973a":"505a4c9c","chunk-31b81b6c":"c77ba619","chunk-392fe86d":"4dd89865","chunk-1fd4012e":"f27abfc0","chunk-465f152a":"617bbf9e","chunk-56bd4d34":"6708685c","chunk-91025f0e":"95aa61a6","chunk-5e98bdef":"d7c0dc38","chunk-76a53b56":"27659f6b","chunk-46f2cf5c":"cdfb29a3","chunk-49544d88":"8aceeddd","chunk-50e755dc":"fcca4a26","chunk-88856ae8":"d4084a78","chunk-644d7d2c":"cbe08842","chunk-67ec2c56":"5604debe","chunk-69a36744":"6da632f9","chunk-79f8c5df":"ab0e5153","chunk-9ed1820e":"23315880","chunk-c93848ca":"bb55ea75","chunk-d19c1a98":"bc488da5","chunk-dc67bca6":"e301cf63"}[e]+".js"}function f(c){if(u[c])return u[c].exports;var n=u[c]={i:c,l:!1,exports:{}};return e[c].call(n.exports,n,n.exports,f),n.l=!0,n.exports}f.e=function(e){var c=[],n={"chunk-020d04f6":1,"chunk-0b0867d8":1,"chunk-2611c278":1,"chunk-28bdb6d8":1,"chunk-08d6541a":1,"chunk-e7a230a4":1,"chunk-a31f410e":1,"chunk-aaa2e532":1,"chunk-93853354":1,"chunk-31b81b6c":1,"chunk-392fe86d":1,"chunk-1fd4012e":1,"chunk-465f152a":1,"chunk-56bd4d34":1,"chunk-91025f0e":1,"chunk-76a53b56":1,"chunk-46f2cf5c":1,"chunk-49544d88":1,"chunk-50e755dc":1,"chunk-88856ae8":1,"chunk-644d7d2c":1,"chunk-67ec2c56":1,"chunk-69a36744":1,"chunk-79f8c5df":1,"chunk-9ed1820e":1,"chunk-c93848ca":1,"chunk-dc67bca6":1};d[e]?c.push(d[e]):0!==d[e]&&n[e]&&c.push(d[e]=new Promise((function(c,n){for(var u="static/css/"+({}[e]||e)+"."+{"chunk-020d04f6":"00533b5d","chunk-0b0867d8":"4ce9fd57","chunk-2611c278":"5b090747","chunk-28bdb6d8":"84f98409","chunk-3f93175c":"31d6cfe0","chunk-2d0a2db2":"31d6cfe0","chunk-2d0ab187":"31d6cfe0","chunk-08d6541a":"d6d93ea0","chunk-39ded03f":"31d6cfe0","chunk-3c8824aa":"31d6cfe0","chunk-e7a230a4":"b028d13f","chunk-2d0d6345":"31d6cfe0","chunk-a31f410e":"4c43b5d9","chunk-aaa2e532":"14d85d78","chunk-2d0da7cc":"31d6cfe0","chunk-2d0e2366":"31d6cfe0","chunk-779f4447":"31d6cfe0","chunk-2d0f012d":"31d6cfe0","chunk-2d216085":"31d6cfe0","chunk-93853354":"158297b0","chunk-2d217e6d":"31d6cfe0","chunk-2d22973a":"31d6cfe0","chunk-31b81b6c":"893c29de","chunk-392fe86d":"f08d51c7","chunk-1fd4012e":"608dbb3b","chunk-465f152a":"9785f15b","chunk-56bd4d34":"255f0f37","chunk-91025f0e":"d6d46058","chunk-5e98bdef":"31d6cfe0","chunk-76a53b56":"a8f8c775","chunk-46f2cf5c":"b5bdb2c6","chunk-49544d88":"208c31f4","chunk-50e755dc":"c11ef9de","chunk-88856ae8":"fe6c1bc5","chunk-644d7d2c":"1bb605d0","chunk-67ec2c56":"a1a9de06","chunk-69a36744":"b3634a1a","chunk-79f8c5df":"265d9d9a","chunk-9ed1820e":"86fe2af9","chunk-c93848ca":"32ff9564","chunk-d19c1a98":"31d6cfe0","chunk-dc67bca6":"b00d5076"}[e]+".css",a=f.p+u,t=document.getElementsByTagName("link"),r=0;r<t.length;r++){var h=t[r],k=h.getAttribute("data-href")||h.getAttribute("href");if("stylesheet"===h.rel&&(k===u||k===a))return c()}var o=document.getElementsByTagName("style");for(r=0;r<o.length;r++){h=o[r],k=h.getAttribute("data-href");if(k===u||k===a)return c()}var b=document.createElement("link");b.rel="stylesheet",b.type="text/css",b.onload=c,b.onerror=function(c){var u=c&&c.target&&c.target.src||a,t=new Error("Loading CSS chunk "+e+" failed.\n("+u+")");t.code="CSS_CHUNK_LOAD_FAILED",t.request=u,delete d[e],b.parentNode.removeChild(b),n(t)},b.href=a;var i=document.getElementsByTagName("head")[0];i.appendChild(b)})).then((function(){d[e]=0})));var u=a[e];if(0!==u)if(u)c.push(u[2]);else{var t=new Promise((function(c,n){u=a[e]=[c,n]}));c.push(u[2]=t);var h,k=document.createElement("script");k.charset="utf-8",k.timeout=120,f.nc&&k.setAttribute("nonce",f.nc),k.src=r(e);var o=new Error;h=function(c){k.onerror=k.onload=null,clearTimeout(b);var n=a[e];if(0!==n){if(n){var u=c&&("load"===c.type?"missing":c.type),d=c&&c.target&&c.target.src;o.message="Loading chunk "+e+" failed.\n("+u+": "+d+")",o.name="ChunkLoadError",o.type=u,o.request=d,n[1](o)}a[e]=void 0}};var b=setTimeout((function(){h({type:"timeout",target:k})}),12e4);k.onerror=k.onload=h,document.head.appendChild(k)}return Promise.all(c)},f.m=e,f.c=u,f.d=function(e,c,n){f.o(e,c)||Object.defineProperty(e,c,{enumerable:!0,get:n})},f.r=function(e){"undefined"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},f.t=function(e,c){if(1&c&&(e=f(e)),8&c)return e;if(4&c&&"object"===typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(f.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e}),2&c&&"string"!=typeof e)for(var u in e)f.d(n,u,function(c){return e[c]}.bind(null,u));return n},f.n=function(e){var c=e&&e.__esModule?function(){return e["default"]}:function(){return e};return f.d(c,"a",c),c},f.o=function(e,c){return Object.prototype.hasOwnProperty.call(e,c)},f.p="/cgfp/ui/",f.oe=function(e){throw console.error(e),e};var h=window["webpackJsonp"]=window["webpackJsonp"]||[],k=h.push.bind(h);h.push=c,h=h.slice();for(var o=0;o<h.length;o++)c(h[o]);var b=k;n()})([]);</script><script src=/cgfp/ui/static/js/chunk-elementUI.c2f7923e.js></script><script src=/cgfp/ui/static/js/chunk-libs.c5e87e82.js></script><script src=/cgfp/ui/static/js/app.f6a618ae.js></script></body></html>

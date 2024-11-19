@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkmain_ui"]=self["webpackChunkmain_ui"]||[]).push([[256],{6256:function(n,e,t){t.r(e),t.d(e,{default:function(){return c}});var a=t(6768);function u(n,e,t,u,r,s){return(0,a.uX)(),(0,a.CE)("h1",null,"这是主应用的template页")}var r={name:"s_template",props:{msg:String}},s=t(1241);const i=(0,s.A)(r,[["render",u],["__scopeId","data-v-2602a772"]]);var c=i}}]);
+//# sourceMappingURL=256.3f44c8fd.js.map
